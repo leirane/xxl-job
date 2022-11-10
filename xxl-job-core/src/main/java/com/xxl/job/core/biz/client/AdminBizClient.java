@@ -1,5 +1,6 @@
 package com.xxl.job.core.biz.client;
 
+import com.google.gson.JsonObject;
 import com.xxl.job.core.biz.AdminBiz;
 import com.xxl.job.core.biz.model.HandleCallbackParam;
 import com.xxl.job.core.biz.model.RegistryParam;
@@ -17,6 +18,7 @@ public class AdminBizClient implements AdminBiz {
 
     public AdminBizClient() {
     }
+
     public AdminBizClient(String addressUrl, String accessToken) {
         this.addressUrl = addressUrl;
         this.accessToken = accessToken;
@@ -27,14 +29,14 @@ public class AdminBizClient implements AdminBiz {
         }
     }
 
-    private String addressUrl ;
+    private String addressUrl;
     private String accessToken;
     private int timeout = 3;
 
 
     @Override
     public ReturnT<String> callback(List<HandleCallbackParam> callbackParamList) {
-        return XxlJobRemotingUtil.postBody(addressUrl+"api/callback", accessToken, timeout, callbackParamList, String.class);
+        return XxlJobRemotingUtil.postBody(addressUrl + "api/callback", accessToken, timeout, callbackParamList, String.class);
     }
 
     @Override
@@ -45,6 +47,42 @@ public class AdminBizClient implements AdminBiz {
     @Override
     public ReturnT<String> registryRemove(RegistryParam registryParam) {
         return XxlJobRemotingUtil.postBody(addressUrl + "api/registryRemove", accessToken, timeout, registryParam, String.class);
+    }
+
+    @Override
+    public ReturnT<String> jobInfoAdd(Object obj) {
+        return XxlJobRemotingUtil.postBody(addressUrl + "api/jobInfoAdd", accessToken, timeout, obj, String.class);
+    }
+
+    @Override
+    public ReturnT<String> jobInfoUpdate(Object obj) {
+        return XxlJobRemotingUtil.postBody(addressUrl + "api/jobInfoUpdate", accessToken, timeout, obj, String.class);
+    }
+
+    @Override
+    public ReturnT<String> jobInfoRemove(Object obj) {
+        return XxlJobRemotingUtil.postBody(addressUrl + "api/jobInfoRemove", accessToken, timeout, obj, String.class);
+    }
+
+    @Override
+    public ReturnT<String> jobInfoStart(Object obj) {
+        return XxlJobRemotingUtil.postBody(addressUrl + "api/jobInfoStart", accessToken, timeout, obj, String.class);
+    }
+
+    @Override
+    public ReturnT<String> jobInfoStop(Object obj) {
+        return XxlJobRemotingUtil.postBody(addressUrl + "api/jobInfoStop", accessToken, timeout, obj, String.class);
+    }
+
+    @Override
+    public List<Object> getJobGroupList(int start, int length, String appname, String title) {
+        JsonObject jsonObject = new JsonObject();
+        jsonObject.addProperty("start", start);
+        jsonObject.addProperty("length", length);
+        jsonObject.addProperty("appname", appname);
+        jsonObject.addProperty("title", title);
+        XxlJobRemotingUtil.postBody(addressUrl + "api/getJobGroupList", accessToken, timeout, jsonObject, String.class);
+        return null;
     }
 
 }

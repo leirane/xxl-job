@@ -32,4 +32,34 @@ public class AdminBizImpl implements AdminBiz {
         return JobRegistryHelper.getInstance().registryRemove(registryParam);
     }
 
+    @Override
+    public ReturnT<String> jobInfoAdd(Object obj) {
+        return null;
+    }
+
+    @Override
+    public ReturnT<String> jobInfoUpdate(Object obj) {
+        return null;
+    }
+
+    @Override
+    public ReturnT<String> jobInfoRemove(Object obj) {
+        return null;
+    }
+
+    @Override
+    public ReturnT<String> jobInfoStart(Object obj) {
+        return null;
+    }
+
+    @Override
+    public ReturnT<String> jobInfoStop(Object obj) {
+        return null;
+    }
+
+    @Override
+    public List<Object> getJobGroupList(int start, int length, String appname, String title) {
+        return null;
+    }
+
 }

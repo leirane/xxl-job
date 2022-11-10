@@ -45,4 +45,15 @@ public interface AdminBiz {
     // ---------------------- biz (custome) ----------------------
     // group、job ... manage
 
+    ReturnT<String> jobInfoAdd(Object obj);
+
+    ReturnT<String> jobInfoUpdate(Object obj);
+
+    ReturnT<String> jobInfoRemove(Object obj);
+
+    ReturnT<String> jobInfoStart(Object obj);
+
+    ReturnT<String> jobInfoStop(Object obj);
+
+    Object getJobGroupList(int start, int length, String appname, String title);
 }

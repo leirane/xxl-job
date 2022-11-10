@@ -16,8 +16,8 @@ import org.junit.jupiter.api.Test;
 public class ExecutorBizTest {
 
     // admin-client
-    private static String addressUrl = "http://127.0.0.1:9999/";
-    private static String accessToken = null;
+    private static String addressUrl = "http://192.168.99.90:9000/";
+    private static String accessToken = "default_token";
 
     @Test
     public void beat() throws Exception {
@@ -54,8 +54,8 @@ public class ExecutorBizTest {
 
         // trigger data
         final TriggerParam triggerParam = new TriggerParam();
-        triggerParam.setJobId(1);
-        triggerParam.setExecutorHandler("demoJobHandler");
+        triggerParam.setJobId(2);
+        triggerParam.setExecutorHandler("ttt");
         triggerParam.setExecutorParams(null);
         triggerParam.setExecutorBlockStrategy(ExecutorBlockStrategyEnum.COVER_EARLY.name());
         triggerParam.setGlueType(GlueTypeEnum.BEAN.name());
