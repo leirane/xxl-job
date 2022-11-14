@@ -58,7 +58,7 @@ public class AdminBizImpl implements AdminBiz {
     }
 
     @Override
-    public List<Object> getJobGroupList(int start, int length, String appname, String title) {
+    public ReturnT<String> getJobGroupList(int start, int length, String appname, String title) {
         return null;
     }
 

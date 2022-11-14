@@ -49,7 +49,7 @@ public class JobApiController {
     @RequestMapping("/{uri}")
     @ResponseBody
     @PermissionLimit(limit = false)
-    public Object api(HttpServletRequest request, @PathVariable("uri") String uri, @RequestBody(required = false) String data) {
+    public ReturnT<String> api(HttpServletRequest request, @PathVariable("uri") String uri, @RequestBody(required = false) String data) {
 
         // valid
         if (!"POST".equalsIgnoreCase(request.getMethod())) {
@@ -106,7 +106,7 @@ public class JobApiController {
                 int length = jsonObject.get("length").getAsInt();
                 String appname = jsonObject.get("appname").getAsString();
                 String title = jsonObject.get("title").getAsString();
-                return xxlJobGroupDao.pageList(offset, length, appname, title);
+                return new ReturnT<String>(ReturnT.SUCCESS_CODE, GsonTool.toJson(xxlJobGroupDao.pageList(offset, length, appname, title)));
             }
             default:
                 return new ReturnT<String>(ReturnT.FAIL_CODE, "invalid request, uri-mapping(" + uri + ") not found.");

@@ -55,5 +55,5 @@ public interface AdminBiz {
 
     ReturnT<String> jobInfoStop(Object obj);
 
-    Object getJobGroupList(int start, int length, String appname, String title);
+    ReturnT<String> getJobGroupList(int start, int length, String appname, String title);
 }
