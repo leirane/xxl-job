@@ -56,4 +56,10 @@ public interface AdminBiz {
     ReturnT<String> jobInfoStop(Object obj);
 
     ReturnT<String> getJobGroupList(int start, int length, String appname, String title);
+
+    ReturnT<String> jobGroupAdd(Object obj);
+
+    ReturnT<String> jobGroupUpdate(Object obj);
+
+    ReturnT<String> jobGroupRemove(Object obj);
 }
