@@ -115,7 +115,11 @@ public class JobApiController {
                 case "jobGroupAdd": {
                     XxlJobGroup xxlJobGroup = GsonTool.fromJson(data, XxlJobGroup.class);
                     xxlJobGroupDao.save(xxlJobGroup);
-                    return ReturnT.SUCCESS;
+                    if (xxlJobGroup.getId() < 1) {
+                        return ReturnT.FAIL;
+                    } else {
+                        return new ReturnT<String>(String.valueOf(xxlJobGroup.getId()));
+                    }
                 }
                 case "jobGroupUpdate": {
                     XxlJobGroup xxlJobGroup = GsonTool.fromJson(data, XxlJobGroup.class);
