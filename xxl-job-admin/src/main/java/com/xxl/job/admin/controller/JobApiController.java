@@ -104,6 +104,11 @@ public class JobApiController {
                     int id = jobInfo.getId();
                     return xxlJobService.stop(id);
                 }
+                case "getJobGroupById": {
+                    JsonObject jsonObject = JsonParser.parseString(data).getAsJsonObject();
+                    int id = jsonObject.get("id").getAsInt();
+                    return new ReturnT<String>(GsonTool.toJson(xxlJobGroupDao.load(id)));
+                }
                 case "getJobGroupList": {
                     JsonObject jsonObject = JsonParser.parseString(data).getAsJsonObject();
                     int offset = jsonObject.get("start").getAsInt();

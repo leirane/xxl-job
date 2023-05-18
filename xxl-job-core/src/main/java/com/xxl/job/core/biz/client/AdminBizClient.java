@@ -74,6 +74,13 @@ public class AdminBizClient implements AdminBiz {
         return XxlJobRemotingUtil.postBody(addressUrl + "api/jobInfoStop", accessToken, timeout, obj, String.class);
     }
 
+    @Override
+    public ReturnT<String> getJobGroupById(int id) {
+        JsonObject jsonObject = new JsonObject();
+        jsonObject.addProperty("id", id);
+        return XxlJobRemotingUtil.postBody(addressUrl + "api/getJobGroupById", accessToken, timeout, jsonObject, String.class);
+    }
+
 
     @Override
     public ReturnT<String> getJobGroupList(int start, int length, String appname, String title) {
