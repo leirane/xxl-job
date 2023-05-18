@@ -62,4 +62,19 @@ public class AdminBizImpl implements AdminBiz {
         return null;
     }
 
+    @Override
+    public ReturnT<String> jobGroupAdd(Object obj) {
+        return null;
+    }
+
+    @Override
+    public ReturnT<String> jobGroupUpdate(Object obj) {
+        return null;
+    }
+
+    @Override
+    public ReturnT<String> jobGroupRemove(Object obj) {
+        return null;
+    }
+
 }
