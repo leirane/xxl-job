@@ -16,6 +16,8 @@ import java.util.List;
  */
 public class AdminBizClient implements AdminBiz {
 
+    private int timeout = 5;
+
     public AdminBizClient() {
     }
 
@@ -29,9 +31,19 @@ public class AdminBizClient implements AdminBiz {
         }
     }
 
+    public AdminBizClient(String addressUrl, String accessToken, int timeout) {
+        this.addressUrl = addressUrl;
+        this.accessToken = accessToken;
+        this.timeout = timeout;
+
+        // valid
+        if (!this.addressUrl.endsWith("/")) {
+            this.addressUrl = this.addressUrl + "/";
+        }
+    }
+
     private String addressUrl;
     private String accessToken;
-    private int timeout = 3;
 
 
     @Override
